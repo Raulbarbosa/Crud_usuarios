@@ -1,0 +1,21 @@
+CREATE DATABASE manage_users;
+
+drop table if exists users;
+
+CREATE TABLE IF NOT EXISTS stack(
+	id SERIAL PRIMARY KEY,
+  	name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS users(
+  	id SERIAL PRIMARY KEY,
+	name TEXT,
+  	email TEXT UNIQUE,
+  	stack INT REFERENCES stack(id)
+);
+
+INSERT INTO stack (name)
+VALUES
+('Backend'),
+('Frontend'),
+('Fullstack');
